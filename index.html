@@ -662,73 +662,76 @@ header {
   opacity: 0.8;
 }
 
-/* ---------- Education Section ---------- */
-.education-card {
-  background: var(--box-bg);
-  border-radius: var(--radius-lg);
-  padding: var(--space-2xl);
-  border: 1px solid var(--card-border);
-  max-width: 800px;
+/* ---------- Education Section (vertical timeline) ---------- */
+.edu-timeline {
+  position: relative;
+  max-width: 760px;
   margin: 0 auto;
-  display: flex;
-  gap: var(--space-2xl);
-  align-items: center;
+  padding-left: var(--space-2xl);
 }
 
-.education-icon {
-  font-size: 4rem;
-  color: var(--accent);
-  flex-shrink: 0;
+.edu-timeline::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--accent) 0,
+    var(--accent) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+  opacity: 0.55;
 }
 
-.education-info h3 {
-  font-size: var(--fs-2xl);
-  color: var(--accent);
-  margin-bottom: var(--space-sm);
+.edu-item {
+  position: relative;
+  padding-bottom: var(--space-2xl);
 }
 
-.education-info h4 {
-  font-size: var(--fs-lg);
+.edu-item:last-child {
+  padding-bottom: 0;
+}
+
+.edu-item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--space-2xl) + 1px);
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  background: var(--bg-color);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 10px rgba(255, 199, 96, 0.4);
+}
+
+.edu-item h3 {
+  font-size: var(--fs-xl);
   color: var(--text-color);
-  margin-bottom: var(--space-sm);
+  font-weight: var(--fw-bold);
+  margin-bottom: 0.3em;
 }
 
-.education-info .edu-meta {
-  display: flex;
-  gap: var(--space-xl);
-  flex-wrap: wrap;
-  margin-bottom: var(--space-md);
-}
-
-.education-info .edu-meta span {
+.edu-item .edu-sub {
   font-size: var(--fs-sm);
-  opacity: 0.8;
-  display: flex;
-  align-items: center;
-  gap: 0.4em;
-}
-
-.education-info .edu-meta span i {
   color: var(--accent);
+  opacity: 0.9;
+  margin-bottom: 0.7em;
 }
 
-.education-grad-project {
-  background: rgba(255, 199, 96, 0.1);
-  border-radius: var(--radius-sm);
-  padding: var(--space-md);
-  margin-top: var(--space-md);
-  border-left: 3px solid var(--accent);
-}
-
-.education-grad-project h5 {
+.edu-item .edu-status {
+  display: inline-block;
+  background: rgba(255, 199, 96, 0.12);
   color: var(--accent);
-  font-size: var(--fs-md);
-  margin-bottom: var(--space-xs);
-}
-
-.education-grad-project p {
-  font-size: var(--fs-sm);
-  opacity: 0.85;
+  border: 1px solid rgba(255, 199, 96, 0.3);
+  padding: 0.3em 1em;
+  border-radius: var(--radius-xl);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
 }
 
 /* ---------- Skills Section ---------- */
@@ -1182,6 +1185,151 @@ header {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
+}
+
+/* ---------- Certificates Timeline (unified with Education timeline style) ---------- */
+.cert-timeline {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto var(--space-2xl);
+  padding-left: var(--space-2xl);
+}
+
+.cert-timeline::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--accent) 0,
+    var(--accent) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+  opacity: 0.55;
+}
+
+.cert-item {
+  position: relative;
+  padding-bottom: var(--space-2xl);
+}
+
+.cert-item:last-child {
+  padding-bottom: 0;
+}
+
+.cert-item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--space-2xl) + 1px);
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  background: var(--bg-color);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 10px rgba(255, 199, 96, 0.4);
+}
+
+.cert-top {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.3em;
+}
+
+.cert-year {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-black);
+  color: var(--accent);
+}
+
+.cert-badge {
+  display: inline-block;
+  background: rgba(255, 199, 96, 0.12);
+  color: var(--accent);
+  border: 1px solid rgba(255, 199, 96, 0.3);
+  padding: 0.15em 0.7em;
+  border-radius: var(--radius-xl);
+  font-size: 0.65rem;
+  font-weight: var(--fw-bold);
+}
+
+.cert-item h4 {
+  color: var(--text-color);
+  font-size: var(--fs-md);
+  margin-bottom: 0.15em;
+}
+
+.cert-org {
+  color: var(--accent);
+  font-size: var(--fs-xs);
+  opacity: 0.9;
+  margin-bottom: 0.6em;
+}
+
+.cert-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.cert-tags span {
+  background: var(--box-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-color);
+  padding: 0.2em 0.65em;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+}
+
+/* Thumbnail + view button, shown below the tags */
+.cert-thumb-wrap {
+  margin-top: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.cert-thumb {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 2px solid rgba(255, 199, 96, 0.3);
+  cursor: pointer;
+  transition: var(--transition-base);
+  flex-shrink: 0;
+}
+
+.cert-thumb:hover {
+  border-color: var(--accent);
+  transform: scale(1.06);
+}
+
+.cert-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.4em 0.8em;
+  background: linear-gradient(135deg, var(--accent), #ff6b35);
+  color: var(--bg-color);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-family: var(--font-primary);
+  line-height: 1.2;
+}
+
+.cert-view-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 20px rgba(255, 199, 96, 0.3);
 }
 
 .achievement-card {
@@ -2040,9 +2188,20 @@ a, button, .btn, .nav-cta, .btn-view-gallery, .scroll-top-btn,
     grid-template-columns: 1fr 1fr;
   }
 
-  .education-card {
-    flex-direction: column;
-    text-align: center;
+  .edu-timeline {
+    padding-left: var(--space-xl);
+  }
+
+  .edu-item::before {
+    left: calc(-1 * var(--space-xl) + 1px);
+  }
+
+  .cert-timeline {
+    padding-left: var(--space-xl);
+  }
+
+  .cert-item::before {
+    left: calc(-1 * var(--space-xl) + 1px);
   }
 
   .contact-container {
@@ -2091,6 +2250,15 @@ a, button, .btn, .nav-cta, .btn-view-gallery, .scroll-top-btn,
 
   .achievement-card {
     padding: 1.5rem;
+  }
+
+  .cert-thumb-wrap {
+    flex-wrap: wrap;
+  }
+
+  .cert-view-btn {
+    white-space: normal;
+    text-align: center;
   }
 
   .achievement-header {
@@ -2439,21 +2607,38 @@ a, button, .btn, .nav-cta, .btn-view-gallery, .scroll-top-btn,
     padding: 0.4em 1em;
   }
 
-  .education-card {
-    padding: var(--space-lg);
+  .edu-timeline {
+    padding-left: var(--space-lg);
   }
 
-  .education-info .edu-meta {
-    flex-direction: column;
-    gap: var(--space-sm);
+  .edu-item::before {
+    left: calc(-1 * var(--space-lg) + 1px);
   }
 
-  .education-info h3 {
+  .edu-item h3 {
     font-size: var(--fs-lg);
   }
 
-  .education-info h4 {
-    font-size: var(--fs-md);
+  .cert-timeline {
+    padding-left: var(--space-lg);
+  }
+
+  .cert-item::before {
+    left: calc(-1 * var(--space-lg) + 1px);
+  }
+
+  .cert-top {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .cert-item h4 {
+    font-size: var(--fs-sm);
+  }
+
+  .cert-view-btn {
+    font-size: 0.65rem;
+    padding: 0.4em 0.6em;
   }
 
   .timeline-content ul {
@@ -2639,7 +2824,7 @@ a, button, .btn, .nav-cta, .btn-view-gallery, .scroll-top-btn,
 <div class="logo"><a href="#hero">A<span>G</span></a></div>
 <div class="burger-icon" id="burgerIcon" aria-label="Toggle navigation"><div class="line"></div><div class="line"></div></div>
 <nav class="nav-menu" id="navMenu"><ul><li><a href="#hero">HOME</a></li><li><a href="#about">ABOUT</a></li><li><a href="#education">EDUCATION</a></li><li><a href="#experience">EXPERIENCE</a></li><li><a href="#skills">SKILLS</a></li><li><a href="#projects">PROJECTS</a></li><!-- [NAV] Achievements link: must match the section id="achievements" below | لينك القسم في القائمة لازم يطابق id القسم -->
-<li><a href="#achievements">ACHIEVEMENTS</a></li><li><a href="#activities">ACTIVITIES</a></li><li><a href="#contact">CONTACT</a></li></ul><a href="#contact" class="nav-cta">Contact Me</a></nav>
+<li><a href="#achievements">CERTIFICATES</a></li><li><a href="#activities">ACTIVITIES</a></li><li><a href="#contact">CONTACT</a></li></ul><a href="#contact" class="nav-cta">Contact Me</a></nav>
 </div></header>
 
 <section id="hero"><div class="hero-container container">
@@ -2665,12 +2850,19 @@ a, button, .btn, .nav-cta, .btn-view-gallery, .scroll-top-btn,
 </div></div></div></section>
 
 <section id="education"><div class="container"><h2 class="section-title">Education &amp; Training</h2>
-<div class="education-card reveal"><div class="education-icon"><i class="ic"><svg viewBox="0 0 576 512" fill="currentColor" aria-hidden="true"><path fill="currentColor" d="M48 195.8l209.2 86.1c9.8 4 20.2 6.1 30.8 6.1s21-2.1 30.8-6.1l242.4-99.8c9-3.7 14.8-12.4 14.8-22.1s-5.8-18.4-14.8-22.1L318.8 38.1C309 34.1 298.6 32 288 32s-21 2.1-30.8 6.1L14.8 137.9C5.8 141.6 0 150.3 0 160L0 456c0 13.3 10.7 24 24 24s24-10.7 24-24l0-260.2zm48 71.7L96 384c0 53 86 96 192 96s192-43 192-96l0-116.6-142.9 58.9c-15.6 6.4-32.2 9.7-49.1 9.7s-33.5-3.3-49.1-9.7L96 267.4z"/></svg></i></div>
-<div class="education-info"><h3>Higher Technological Institute</h3><h4>Current student</h4>
-<div class="edu-meta"><span><i class="ic"><svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path fill="currentColor" d="M0 188.6C0 84.4 86 0 192 0S384 84.4 384 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0-50.2-54.5-170.4-197.5-170.4-316.8zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"/></svg></i> 10th of Ramadan City</span></div></div></div>
-<div class="education-card reveal"><div class="education-icon"><i class="ic"><svg viewBox="0 0 640 512" fill="currentColor" aria-hidden="true"><path fill="currentColor" d="M64 96c0-35.3 28.7-64 64-64l384 0c35.3 0 64 28.7 64 64l0 240-64 0 0-240-384 0 0 240-64 0 0-240zM0 403.2C0 392.6 8.6 384 19.2 384l601.6 0c10.6 0 19.2 8.6 19.2 19.2 0 42.4-34.4 76.8-76.8 76.8L76.8 480C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zM393 175l48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"/></svg></i></div>
-<div class="education-info"><h3>Digital Egypt Pioneers Initiative (DEPI)</h3><h4>Round 5 — Data Engineering</h4>
-<div class="edu-meta"><span><i class="ic"><svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path fill="currentColor" d="M120 0c13.3 0 24 10.7 24 24l0 40 160 0 0-40c0-13.3 10.7-24 24-24s24 10.7 24 24l0 40 32 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 128C0 92.7 28.7 64 64 64l32 0 0-40c0-13.3 10.7-24 24-24zm0 112l-56 0c-8.8 0-16 7.2-16 16l0 48 352 0 0-48c0-8.8-7.2-16-16-16l-264 0zM48 224l0 192c0 8.8 7.2 16 16 16l320 0c8.8 0 16-7.2 16-16l0-192-352 0z"/></svg></i> Current training</span></div></div></div>
+<!-- [EDU] Timeline style: dashed vertical line + dot per entry | تايم لاين بخط متقطع ودائرة لكل سطر -->
+<div class="edu-timeline">
+  <div class="edu-item reveal">
+    <h3>Higher Technological Institute</h3>
+    <p class="edu-sub">10th of Ramadan City</p>
+    <span class="edu-status">Current student</span>
+  </div>
+  <div class="edu-item reveal">
+    <h3>Digital Egypt Pioneers Initiative (DEPI)</h3>
+    <p class="edu-sub">Round 5 — Data Engineering</p>
+    <span class="edu-status">Current training</span>
+  </div>
+</div>
 </div></section>
 
 <section id="experience"><div class="container"><h2 class="section-title">Experience</h2>
@@ -2703,45 +2895,45 @@ a, button, .btn, .nav-cta, .btn-view-gallery, .scroll-top-btn,
      كل كارت = شهادة واحدة أو حاجة اتعلمتها. انسخ الكارت كله لإضافة إنجاز جديد.
      =================================================================== -->
 <section id="achievements"><div class="container">
-  <h2 class="section-title">Certificates &amp; Achievements</h2>
-  <div class="achievements-grid">
+  <h2 class="section-title">Certificates</h2>
+  <!-- [CERT] Timeline style: year + Verify button on the left, title/org/tags on the right -->
+  <!-- Verify button opens the certificate photo (same gallery system as before) | زرار Verify بيفتح صورة الشهادة -->
+  <div class="cert-timeline">
 
     <!-- ===== CARD 1: PYTHON | الكارت 1: بايثون ===== -->
-    <div class="achievement-card reveal">
-      <div class="achievement-header">
-        <div class="achievement-icon">🐍</div>
-        <!-- Key 'python-cert' must match galleryData below | المفتاح 'python-cert' لازم يطابق galleryData -->
-        <div class="achievement-thumbnails" onclick="openGallery('python-cert')">
-          <div class="thumbnail" style="background-image:url('images/achievements/python-1.jpg')"></div>
-        </div>
+    <div class="cert-item reveal">
+      <div class="cert-top">
+        <span class="cert-year">2024</span>
+        <span class="cert-badge">Verified <i class="ic"><svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path fill="currentColor" d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg></i></span>
       </div>
-      <div class="achievement-content">
-        <h4>Python Certificate</h4>
-        <p class="achievement-org">HakerRank  </p>
-        <p class="achievement-date">2024</p>
-        <p class="achievement-detail">Script and library like def,Numpy,Pandas ,OS ,Beutefulsoub4 , .....</p>
-        <button class="btn-view-gallery" onclick="openGallery('python-cert')">View Photos</button>
+      <h4>Python Certificate</h4>
+      <p class="cert-org">HackerRank</p>
+      <div class="cert-tags"><span>BeautifulSoup</span><span>Pandas</span><span>Numpy</span></div>
+      <!-- Thumbnail + view button | صورة مصغرة + زرار المشاهدة -->
+      <!-- Key 'python-cert' must match galleryData below | المفتاح 'python-cert' لازم يطابق galleryData -->
+      <div class="cert-thumb-wrap">
+        <img class="cert-thumb" src="images/achievements/python-1.jpg" alt="Python Certificate" onclick="openGallery('python-cert')" />
+        <button class="cert-view-btn" onclick="openGallery('python-cert')"><i class="ic"><svg viewBox="0 0 576 512" fill="currentColor" aria-hidden="true"><path fill="currentColor" d="M288 32c-80.8 0-146.1 36.8-192.6 80.6A297.6 297.6 0 0 0 5.3 256a297.6 297.6 0 0 0 90.1 143.4C141.9 443.2 207.2 480 288 480s146.1-36.8 192.6-80.6A297.6 297.6 0 0 0 570.7 256 297.6 297.6 0 0 0 480.6 112.6C434.1 68.8 368.8 32 288 32zM288 400c-79.5 0-144-64.5-144-144s64.5-144 144-144 144 64.5 144 144-64.5 144-144 144zm0-240a96 96 0 1 0 0 192 96 96 0 1 0 0-192z"/></svg></i> اضغط لمشاهدة الشهادة أو الصورة</button>
       </div>
     </div>
 
     <!-- ===== CARD 2: SQL | الكارت 2: إس كيو إل ===== -->
-    <div class="achievement-card reveal">
-      <div class="achievement-header">
-        <div class="achievement-icon">🗄️</div>
-        <!-- Key 'sql-cert' must match galleryData below | المفتاح 'sql-cert' لازم يطابق galleryData -->
-        <div class="achievement-thumbnails" onclick="openGallery('sql-cert')">
-          <div class="thumbnail" style="background-image:url('images/achievements/sql-1.jpg')"></div>
-        </div>
+    <div class="cert-item reveal">
+      <div class="cert-top">
+        <span class="cert-year">2026</span>
+        <span class="cert-badge">Verified <i class="ic"><svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path fill="currentColor" d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg></i></span>
       </div>
-      <div class="achievement-content">
-        <h4>SQL Certificate</h4>
-        <p class="achievement-org">HakerRank</p>
-        <p class="achievement-date">2026</p>
-        <p class="achievement-detail">queries, joins, database design....</p>
-        <button class="btn-view-gallery" onclick="openGallery('sql-cert')">View Photos</button>
+      <h4>SQL Certificate</h4>
+      <p class="cert-org">HackerRank</p>
+      <div class="cert-tags"><span>DB Design</span><span>Joins</span><span>Queries</span></div>
+      <!-- Thumbnail + view button | صورة مصغرة + زرار المشاهدة -->
+      <!-- Key 'sql-cert' must match galleryData below | المفتاح 'sql-cert' لازم يطابق galleryData -->
+      <div class="cert-thumb-wrap">
+        <img class="cert-thumb" src="images/achievements/sql-1.jpg" alt="SQL Certificate" onclick="openGallery('sql-cert')" />
+        <button class="cert-view-btn" onclick="openGallery('sql-cert')"><i class="ic"><svg viewBox="0 0 576 512" fill="currentColor" aria-hidden="true"><path fill="currentColor" d="M288 32c-80.8 0-146.1 36.8-192.6 80.6A297.6 297.6 0 0 0 5.3 256a297.6 297.6 0 0 0 90.1 143.4C141.9 443.2 207.2 480 288 480s146.1-36.8 192.6-80.6A297.6 297.6 0 0 0 570.7 256 297.6 297.6 0 0 0 480.6 112.6C434.1 68.8 368.8 32 288 32zM288 400c-79.5 0-144-64.5-144-144s64.5-144 144-144 144 64.5 144 144-64.5 144-144 144zm0-240a96 96 0 1 0 0 192 96 96 0 1 0 0-192z"/></svg></i> اضغط لمشاهدة الشهادة أو الصورة</button>
       </div>
     </div>
-    <!-- To add another card, copy one whole <div class="achievement-card"> block | لإضافة كارت جديد انسخ بلوك achievement-card كامل -->
+    <!-- To add another cert, copy one whole <div class="cert-item"> block, and add its key + images to galleryData in the script below -->
 
   </div>
 </div></section>
